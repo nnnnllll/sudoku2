@@ -1,0 +1,5 @@
+{
+  "name": "WeChat Sudoku",
+  "description": "A mobile-optimized Sudoku game with difficulty selection, unique solution verification, and answer checking.",
+  "requestFramePermissions": []
+}
