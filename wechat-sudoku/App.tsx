@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Settings, CheckCircle, Eye, RefreshCw, AlertCircle, Play, Pause, Clock, Trophy, History as HistoryIcon, Eraser, RotateCcw, Pencil } from 'lucide-react';
 import { generateSudokuPuzzle } from './utils/sudokuLogic';
 import { BoardData, Grid, GameStatus, GameRecord } from './types';
+import NumberPad from './components/NumberPad';
 
 const App: React.FC = () => {
   const [boardData, setBoardData] = useState<BoardData>([]);
@@ -406,7 +407,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Sudoku Board Container */}
-      <div className="relative w-full max-w-md aspect-square mb-4">
+      <div className="relative w-full max-w-md aspect-square mb-0">
         {/* Board */}
         <div className={`w-full h-full bg-gray-800 p-1 rounded-lg shadow-lg overflow-hidden transition-all duration-300
             ${status === GameStatus.READY ? 'blur-sm opacity-50' : ''}
@@ -498,6 +499,15 @@ const App: React.FC = () => {
                 <p className="text-gray-600 font-medium">生成唯一解数独...</p>
             </div>
         )}
+      </div>
+
+      {/* Number Pad */}
+      <div className="w-full max-w-md mb-6">
+        <NumberPad 
+            onNumberClick={handleNumberInput}
+            onDelete={handleDelete}
+            disabled={status !== GameStatus.PLAYING}
+        />
       </div>
 
       {/* Action Buttons Row 1: Tools */}
